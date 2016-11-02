@@ -33,7 +33,5 @@ public abstract class Conta {
 		}
 		return false;
 	}
-	public void emprestimo(double valor) {
-		this.deposita(valor);
-	}
+
 }
