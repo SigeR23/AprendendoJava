@@ -7,22 +7,18 @@ private double totalAtualizado = 0;
 	
 	public void atualiza (Conta c, double taxa) {
 		System.out.println("Saldo anterior: " + c.getSaldo());
-		double valorAtualizado;
+		double valorAtualizado = 0;
 		if (c instanceof ContaCorrente) {
-			valorAtualizado = c.saldo * taxa * 2;
-			c.saldo += valorAtualizado;
+			c.atualiza(taxa);
+			valorAtualizado = c.getSaldo() * taxa * 2;
 		
 		} else 
 			if (c instanceof ContaPoupanca) {
-				valorAtualizado = c.saldo * taxa * 3;
-				c.saldo += valorAtualizado;
-				
-			} else {
-				valorAtualizado = c.saldo * taxa;
-				c.saldo += valorAtualizado;
+				c.atualiza(taxa);
+				valorAtualizado = c.getSaldo() * taxa * 3;
 			}
 		System.out.println("Novo Saldo: " + c.getSaldo());
-		totalAtualizado += valorAtualizado;
+		totalAtualizado += valorAtualizado;	
 	}
 	
 	public double getTotalAtualizado() {
