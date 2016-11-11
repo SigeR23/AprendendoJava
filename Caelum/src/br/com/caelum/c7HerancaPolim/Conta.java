@@ -30,8 +30,9 @@ public class Conta {
 	}
 	
 
-	public boolean equals(Conta c) {
-		if(this.getNumeroDaConta() == c.getNumeroDaConta()) {
+	public boolean equals(Object o) {
+		Conta outraConta = (Conta) o;
+		if(this.getNumeroDaConta() == outraConta.getNumeroDaConta()) {
 			return true;
 		}
 		return false;
