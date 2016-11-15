@@ -33,12 +33,17 @@ public class Conta {
 		return this.numeroDaConta;
 	}
 	
-
-	public boolean equals(Conta c) {
-		if(this.getNumeroDaConta() == c.getNumeroDaConta()) {
-			return true;
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Conta) {
+		return this.numeroDaConta == ((Conta)obj).numeroDaConta;
 		}
 		return false;
+	}
+	
+	@Override
+	public String toString() {
+		return "" + this.numeroDaConta;
 	}
 }
 
