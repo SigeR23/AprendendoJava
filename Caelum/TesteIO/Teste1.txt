@@ -1,0 +1,3 @@
+teste
+	esquevendo em um arquivo.txt
+fim
