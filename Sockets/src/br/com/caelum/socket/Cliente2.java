@@ -1,5 +1,6 @@
 package br.com.caelum.socket;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.Socket;
@@ -14,16 +15,14 @@ import java.util.Scanner;
 public class Cliente2 {
 	public static void main(String[] args) throws UnknownHostException, IOException {
 		
-		Socket cliente = new Socket("127.0.0.2", 12341);
+		Socket cliente = new Socket("127.0.0.2", 12342);
 		System.out.println("Cliente se conectou");
+		Scanner entrada  = new Scanner(new FileInputStream("Arquivos/arquivo.txt"));
+		PrintStream saida = new PrintStream(cliente.getOutputStream());
 		
-		Scanner entrada  = new Scanner(System.in);
-		PrintStream saida = new PrintStream("Arquivos/arquivo.txt");
-		
-		while (entrada.hasNext()) {
+		while (entrada.hasNextLine()) {
 			saida.println(entrada.nextLine());
 		}
-		
 		saida.close();
 		entrada.close();
 		cliente.close();

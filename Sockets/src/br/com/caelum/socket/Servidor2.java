@@ -17,16 +17,17 @@ public class Servidor2 {
 	
 	public static void main(String[] args) throws IOException{
 		
-		ServerSocket servidor = new ServerSocket(12341);
+		ServerSocket servidor = new ServerSocket(12342);
 		
 		Socket cliente = servidor.accept();
+		
 		System.out.println("" + cliente.getInetAddress().getHostAddress() + " está conectado");
 		
 		Scanner entrada = new Scanner(cliente.getInputStream());
-		
 		PrintStream saida = new PrintStream("Arquivos/recebido.txt");
 		
-		while (entrada.hasNext()) {
+		while (entrada.hasNextLine()) {
+			
 			saida.println(entrada.nextLine());
 		}
 		

@@ -1,0 +1,7 @@
+Cliente
+deve
+ler esse arquivo
+Servidor
+deve gravar esse conteudo no arquivo
+recebido.txt
+fim

@@ -1,3 +1,5 @@
-teste
-	escrevendo em um arquivo.txt
-fim
+123
+123
+13
+1
+ctrl+z
