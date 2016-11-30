@@ -12,7 +12,7 @@ public class TrataCliente implements Runnable{
 		this.cliente = cliente;	
 	}
 	public void run() {
-		cliente.
+		
 		try (Scanner s =  new Scanner(cliente.getInputStream())) {
 			while (s.hasNextLine()) {
 				System.out.println(s.nextLine());
