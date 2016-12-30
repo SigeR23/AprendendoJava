@@ -1,5 +1,6 @@
 package br.com.caelum.modal;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class Contato {
@@ -8,6 +9,7 @@ public class Contato {
 	private String nome;
 	private String email;
 	private String endereco;
+	private Calendar dataNascimento;
 	
 	public Long getId() {
 		return id;
@@ -39,7 +41,17 @@ public class Contato {
 	public void setDataNascimento(Calendar dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
-	private Calendar dataNascimento;
 	
+	public void imprimirContato() {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		
+		System.out.println("ID: " + id);
+		System.out.println("Nome: " + nome);
+		System.out.println("E-Mail: " + email);
+		System.out.println("Endereco: " + endereco);
+		System.out.println("DataDeNascimento: " + sdf.format(dataNascimento.getTime()));
+		System.out.println();
+	}
 	
+
 }

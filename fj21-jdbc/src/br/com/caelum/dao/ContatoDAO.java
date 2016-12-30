@@ -74,11 +74,12 @@ public class ContatoDAO {
 		
 	}
 	
-	public Contato getContatoPorID(String id) {
+	public Contato getContatoPorID(long id) {
 		Contato contato = null;
 		try {
-			String sql = "Select * from contatos where id = " + id;
+			String sql = "Select * from contatos where id = ?";
 			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setLong(1, id);
 			ResultSet rs = stmt.executeQuery();
 			
 			
@@ -102,5 +103,42 @@ public class ContatoDAO {
 		}
 		
 		
+	}
+	
+	public void alterarContato(Contato contato) {
+		
+		String sql = "update contatos set nome = ?, email = ?, endereco = ?, dataNascimento = ? where id = ?";
+		
+		try {
+			
+			PreparedStatement stmt = con.prepareStatement(sql);
+			
+			stmt.setString(1, contato.getNome());
+			stmt.setString(2, contato.getEmail());
+			stmt.setString(3, contato.getEndereco());
+			stmt.setDate(4, new Date(contato.getDataNascimento().getTimeInMillis()));
+			stmt.setLong(5, contato.getId());
+			
+			stmt.execute();
+			stmt.close();
+		} catch (SQLException e) {
+			throw new DAOException("Erro ao tentar alterar os dados de um contato");
+		}
+	}
+	
+	public void excluirContatoPorID(long id) {
+		
+		String sql = "delete from contatos where id = ?";
+		 
+		try {
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setLong(1, id);
+			
+			stmt.execute();
+			stmt.close();
+		} catch (SQLException e) {
+			throw new DAOException("Erro ao excluir um contato");
+		}
+				
 	}
 }

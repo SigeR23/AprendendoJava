@@ -8,7 +8,7 @@ import br.com.caelum.modal.Contato;
 public class TestaConsultaID {
 
 	public static void main(String[] args) {
-		String id = "4";
+		Long id = new Long(4);
 		Contato c = null;
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		ContatoDAO contatoDAO = new ContatoDAO();
