@@ -36,6 +36,8 @@ public class Funcionario {
 		System.out.println("Nome: " + this.nome);
 		System.out.println("Usuario: " + this.usuario);
 		System.out.println("Senha: " + this.senha);
+		
+		System.out.println();
 	}
 	
 }
