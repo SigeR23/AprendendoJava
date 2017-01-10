@@ -1,4 +1,4 @@
-package br.com.calelum.DAO;
+package br.com.caelum.dao;
 
 @SuppressWarnings("serial")
 public class DAOException extends RuntimeException {

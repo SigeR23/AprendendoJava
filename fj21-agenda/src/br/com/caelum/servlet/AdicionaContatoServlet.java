@@ -6,15 +6,17 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.caelum.dao.ContatoDAO;
 import br.com.caelum.modal.Contato;
-import br.com.calelum.DAO.ContatoDAO;
 
+@SuppressWarnings("serial")
 @WebServlet(name = "adicionaContatoServlet", value = "/adicionaContato")
 public class AdicionaContatoServlet extends HttpServlet {
 	
@@ -47,13 +49,7 @@ public class AdicionaContatoServlet extends HttpServlet {
 		
 		new ContatoDAO().adicionaContato(contato);
 		
-		out.println("<html>");
-		out.println("<body>");
-		out.println("Contato " + contato.getNome() + " adicionado com sucesso");
-		out.println("</body>");
-		out.println("</html>");
-		
-		
-		
+		RequestDispatcher rd = request.getRequestDispatcher("/contato-adicionado.jsp");
+		rd.forward(request, response);
 	}
 }
