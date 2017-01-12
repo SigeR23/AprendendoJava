@@ -13,13 +13,13 @@
 	<h3>Alterar Contato</h3>
 	
 	<hr />
-	<form action="">
-		ID: <input type="text" name="id" value="${contato.id }" readonly><br>
+	<form action=mvc?logica=SalvarAlteracaoLogica>
+		ID: <input type="text" name="id" value="${contato.id}" readonly><br>
 		Nome: <input type="text" name="nome" value="${contato.nome}"><br>
 		E-mail <input type="text" name="email" value="${contato.email}"><br>
 		Endereco: <input type="text" name="endereco" value="${contato.endereco}"><br>
 		Data de Nascimento:
-		<cdata:campoData id="dataNascimento" />
+		<cdata:campoData id="dataNascimento"/>
 		<br />
 		<input type="submit" value="salvar">
 	</form>

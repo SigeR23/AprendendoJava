@@ -13,6 +13,12 @@ import br.com.caelum.connectionfactory.ConnectionFactory;
 import br.com.caelum.modal.Contato;
 
 public class ContatoDAO {
+	
+	Connection con;
+	
+	public ContatoDAO(Connection con) {
+		this.con = con;
+	}
 	/**
 	 * @param contato
 	 * 
@@ -23,8 +29,7 @@ public class ContatoDAO {
 		
 		String sql = "insert into contatos (nome, email, endereco, dataNascimento) values (?, ?, ?, ?)";
 		
-		try(Connection con = ConnectionFactory.getInstance().getConnection(); 
-				PreparedStatement stmt = con.prepareStatement(sql)) {
+		try(PreparedStatement stmt = con.prepareStatement(sql)) {
 			
 			stmt.setString(1, contato.getNome());
 			stmt.setString(2, contato.getEmail());
@@ -43,7 +48,7 @@ public class ContatoDAO {
 		String sql = "select * from contatos where id = ?";
 		Contato c = null;
 		
-		try(PreparedStatement stmt = ConnectionFactory.getInstance().getConnection().prepareStatement(sql)) {
+		try(PreparedStatement stmt = con.prepareStatement(sql)) {
 			stmt.setLong(1, contato.getId());
 			ResultSet rs = stmt.executeQuery();
 			if(rs.next()) {
@@ -71,8 +76,7 @@ public class ContatoDAO {
 		String sql = "select * from contatos";
 		List<Contato> contatos = null;
 		Contato contato  = null;
-		try(Connection con = ConnectionFactory.getInstance().getConnection();
-				ResultSet rs = con.prepareStatement(sql).executeQuery()) { 
+		try(ResultSet rs = con.prepareStatement(sql).executeQuery()) { 
 			contatos = new ArrayList<>();
 			while(rs.next()) {
 				contato = new Contato();
@@ -96,7 +100,7 @@ public class ContatoDAO {
 	public void alterarContato(Contato contato) {
 		String sql ="update contatos set nome = ?, email = ?, endereco = ?, dataNascimento = ? where id = ?";
 		
-		try(PreparedStatement stmt = ConnectionFactory.getInstance().getConnection().prepareStatement(sql)) {
+		try(PreparedStatement stmt = con.prepareStatement(sql)) {
 			stmt.setString(1, contato.getNome());
 			stmt.setString(2, contato.getEmail());
 			stmt.setString(3, contato.getEndereco());
@@ -111,7 +115,7 @@ public class ContatoDAO {
 	public void excluirContato(Contato contato) {
 		String sql = "delete from contatos where id = ?";
 		
-		try(PreparedStatement stmt = ConnectionFactory.getInstance().getConnection().prepareStatement(sql)) {
+		try(PreparedStatement stmt = con.prepareStatement(sql)) {
 			stmt.setLong(1, contato.getId());
 			stmt.execute();
 			
