@@ -13,7 +13,7 @@
 	<h3>Alterar Contato</h3>
 	
 	<hr />
-	<form action=mvc?logica=SalvarAlteracaoLogica>
+	<form action=mvc?logica=SalvarAlteracaoLogica method="post">
 		ID: <input type="text" name="id" value="${contato.id}" readonly><br>
 		Nome: <input type="text" name="nome" value="${contato.nome}"><br>
 		E-mail <input type="text" name="email" value="${contato.email}"><br>

@@ -15,6 +15,7 @@ public class SalvarAlteracaoLogica implements Logica {
 	@Override
 	public String executa(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		Contato contato = new Contato();
+		contato.setId(Long.parseLong(req.getParameter("id")));
 		contato.setNome(req.getParameter("nome"));
 		contato.setEmail(req.getParameter("email"));
 		contato.setEndereco(req.getParameter("endereco"));
@@ -22,8 +23,8 @@ public class SalvarAlteracaoLogica implements Logica {
 		dataNascimento.setTime(new SimpleDateFormat("dd/MM/yyyy").parse(req.getParameter("dataNascimento")));
 		contato.setDataNascimento(dataNascimento);
 		
-		new ContatoDAO((Connection)req.getAttribute("Conexao")).alterarContato(contato);
-		return "mvc?logica=LitaContatoLogica";
+		new ContatoDAO((Connection)req.getAttribute("conexao")).alterarContato(contato);
+		return "mvc?logica=ListaContatoLogica";
 	}
 
 }

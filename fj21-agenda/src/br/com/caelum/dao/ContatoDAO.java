@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import br.com.caelum.connectionfactory.ConnectionFactory;
 import br.com.caelum.modal.Contato;
 
 public class ContatoDAO {
@@ -99,17 +98,17 @@ public class ContatoDAO {
 	
 	public void alterarContato(Contato contato) {
 		String sql ="update contatos set nome = ?, email = ?, endereco = ?, dataNascimento = ? where id = ?";
-		
+		System.out.println("Conexão " + con);
 		try(PreparedStatement stmt = con.prepareStatement(sql)) {
 			stmt.setString(1, contato.getNome());
 			stmt.setString(2, contato.getEmail());
 			stmt.setString(3, contato.getEndereco());
 			stmt.setDate(4, new Date(contato.getDataNascimento().getTimeInMillis()));
+			stmt.setLong(5, contato.getId());
 			stmt.execute();
 		} catch (SQLException e) {
 			throw new DAOException("erro ao alterar um contato");
 		}
-		
 	}
 
 	public void excluirContato(Contato contato) {

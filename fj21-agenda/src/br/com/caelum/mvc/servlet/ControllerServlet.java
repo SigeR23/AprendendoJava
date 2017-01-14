@@ -28,7 +28,7 @@ public class ControllerServlet extends HttpServlet {
 		 * adiciona o parametor ao final da String para obter o nome completo da classe que possui a logica a ser executada
 		 */
 		String nomeDaClasse ="br.com.caelum.logica." + parametro;
-		
+		System.out.println(nomeDaClasse);
 		try {
 			// inicializando a classe
 			Class classe = Class.forName(nomeDaClasse);
